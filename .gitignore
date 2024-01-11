@@ -128,6 +128,8 @@ fabric.properties
 .history
 .ionide
 
+# Rider stuffs, not needed
+#/.idea/.idea.FProg_WarAndPeace_GruppeG/.idea/encodings.xml
+.idea/.idea*
 # End of https://www.toptal.com/developers/gitignore/api/linux,fsharp,rider,visualstudiocode
-/.idea/.idea.FProg_WarAndPeace_GruppeG/.idea/encodings.xml
 
