@@ -1,7 +1,5 @@
 namespace WarAndPeaceFProg
 
-open System.Security.Cryptography
-
 module ContentParsing =
     //separate into chapters
     let isLineNewChapter (actualLine: string) =
@@ -14,9 +12,10 @@ module ContentParsing =
         else
             match accumulationState with
             | [] -> [[line]] //if actual accumulationState is empty just add the new string
-            | currentChapter :: last -> (line :: currentChapter) :: last
-            //| [] -> [line.Split([|' '|]) |> Array.toList |> List.rev] //if actual accumulationState is empty just add the new string
-            //| currentChapter :: rest -> line.Split([|' '|]) |> Array.toList |> List.rev @ currentChapter :: rest
+            | currentChapter :: last -> (line :: currentChapter) :: last //append the current line to the last element of the chapter 2D list
+            
+    let partitionContentByChapter (content: string seq) =
+        content |> Seq.fold splitByChapter [] |> List.map(fun element -> element |> List.rev) |> List.rev
             
     let splitSingleLine (chapterContent: string list) =
         chapterContent |> List.map (fun line -> line.Split(" ") |> Array.toList) |> List.concat
@@ -24,20 +23,8 @@ module ContentParsing =
     let splitLines (partitionedContent: string list list) =
         partitionedContent |> List.map splitSingleLine
         
-    let partitionContentByChapter (content: string seq) =
-        content |> Seq.fold splitByChapter [] |> List.map(fun element -> element |> List.rev) |> List.rev
-        
-    // let result =
-    //     inputSequence
-    //     |> Seq.fold splitByChapter []
-    //     |> List.rev
-
-        
-        
-    // //todo separate in chars
-    // let separateIntoChapters (sequence: seq<string>) =
-    //          let chaptersSeq: seq<seq<string>> = []
-    //          let a = sequence |> Seq.takeWhile (fun line -> not (isLineNewChapter line)) |> Seq.skip 1
-    //          chaptersSeq
+    let extractFormattedFileContent (filteredContent: string seq) =
+            let splitContent = partitionContentByChapter filteredContent
+            splitLines splitContent
              
     
