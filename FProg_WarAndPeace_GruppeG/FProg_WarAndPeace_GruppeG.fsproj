@@ -8,6 +8,7 @@
     <ItemGroup>
         <Compile Include="WarAndPeaceFProg\FileOperations.fs" />
         <Compile Include="WarAndPeaceFProg\ContentParsing.fs" />
+        <Compile Include="WarAndPeaceFProg\ChapterAnalysis.fs" />
         <Compile Include="Program.fs"/>
     </ItemGroup>
 
