@@ -13,3 +13,15 @@ module ChapterAnalysis =
     let calculateChapterArgument (formattedBookContent: string list list) (warTerms: string Set) (peaceTerms: string Set) =
         let analyseChapterContent = curriedAnalyseWords warTerms peaceTerms
         formattedBookContent |> List.map analyseChapterContent
+
+    let indexWithFilter (warTerms: Set<string>)  (chapterContent: string list) = 
+        chapterContent 
+        |> List.indexed 
+        |> List.filter (
+            fun (index: int, value: string) -> warTerms |> Set.contains value)
+        |> List.map fst // fst returns first element of (index, value) tuple
+    let calculateDistance (indexList: int List) = 
+        indexList 
+        |> List.pairwise
+        |> List.map (
+            fun (first: int, second: int) -> second - first) 
