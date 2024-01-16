@@ -28,5 +28,5 @@ module FileOperations =
             |> Seq.skip 1 //we remove the string we matched against
             
     let extractFileContent (bookStartFlag: string) (bookEndFlag: string) = 
-        let content = readFileContent "../../../test.txt"
+        let content = readFileContent "../../../book.txt"
         truncateAfterMatch (truncateUntilMatch content bookStartFlag) bookEndFlag
