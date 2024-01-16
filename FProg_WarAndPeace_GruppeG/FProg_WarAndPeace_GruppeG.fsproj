@@ -10,6 +10,7 @@
         <Compile Include="WarAndPeaceFProg\ContentParsing.fs" />
         <Compile Include="WarAndPeaceFProg\ChapterAnalysis.fs" />
         <Compile Include="Program.fs"/>
+        <Content Include="output.txt" />
     </ItemGroup>
 
 </Project>
