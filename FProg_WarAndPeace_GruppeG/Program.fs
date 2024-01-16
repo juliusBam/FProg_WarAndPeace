@@ -23,9 +23,15 @@ let writeStringsToFile (filePath: string) (content: seq<string>) =
 
 [<EntryPoint>]
 let main (args: string array) =
+    let stopWatch = System.Diagnostics.Stopwatch.StartNew()
     let formattedBookContent = getBookContent
     let peaceTerms = Set.ofSeq (readFileContent "../../../peaceTerms.txt") //terms are saved in Sequence (like a Map but without values) for fast search operations O(log n) vs 0(n)
     let warTerms = Set.ofSeq (readFileContent "../../../warTerms.txt")
+    stopWatch.Stop()
+    printfn $"Parsing of files done in: %f{stopWatch.Elapsed.TotalMilliseconds} ms"
+    stopWatch.Restart()
     let result = calculateChapterArgument formattedBookContent warTerms peaceTerms |> mapResults |> Seq.ofList
+    stopWatch.Stop()
+    printfn $"Chapter parsing done in: %f{stopWatch.Elapsed.TotalMilliseconds} ms"
     writeStringsToFile "../../../output.txt" result
     0

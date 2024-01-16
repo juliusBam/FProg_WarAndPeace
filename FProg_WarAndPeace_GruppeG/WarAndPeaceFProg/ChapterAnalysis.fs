@@ -17,10 +17,19 @@ module ChapterAnalysis =
             fun (_: int, value: string) -> termsToMatch |> Set.contains value)
         |> List.map fst // fst returns first element of (index, value) tuple
     
+    //in combination with the 55 differences density returns 48 differences to the reference
+    //scales the distance to increase the weight of relevant distances
+    let scaleDistance (first: int) (second: int) =
+        let diff = second - first
+        match diff with
+        | diff when diff < 100 -> int (diff / 2)
+        | diff when diff < 400 -> diff * 2
+        | _ -> diff
+    
     let calculateDistance (indexList: int List) = 
         indexList 
         |> List.pairwise
-        |> List.map (fun (first: int, second: int) -> second - first)
+        |> List.map (fun (first: int, second: int) -> scaleDistance first second)
 
     let calculateDensity (distanceList: int list) =
         //55 differences to the reference
