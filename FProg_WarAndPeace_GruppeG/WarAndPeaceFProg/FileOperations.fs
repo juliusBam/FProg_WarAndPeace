@@ -5,9 +5,10 @@ open System.Text.RegularExpressions
 module FileOperations =
     open System.IO
     
+    //Line sanitization leads to worse results
     // let sanitizeLine (line: string) =
     //     let pattern: string = "[^a-zA-Z0-9\s]"
-    //     Regex(pattern).Replace(line, "") 
+    //     Regex(pattern).Replace(line, "")
     //use sequences in order to avoid loading all values with lazy loading
     let readFileContent (fileName: string) =
         seq {
