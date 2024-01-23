@@ -19,7 +19,7 @@ module ContentParsing =
             
     let splitSingleLine (chapterContent: string list) =
         //let wordSplitters = [|',';'.'; '-'; ' '; '''; '"'|]
-        let wordSplitters = [|' ';','|]
+        let wordSplitters = [|' '|]
         chapterContent |> List.map (fun line -> line.Split(wordSplitters) |> Array.toList) |> List.concat
             
     let splitLines (partitionedContent: string list list) =
