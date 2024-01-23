@@ -18,7 +18,9 @@ module ContentParsing =
         content |> Seq.fold splitByChapter [] |> List.map(fun element -> element |> List.rev) |> List.rev
             
     let splitSingleLine (chapterContent: string list) =
-        chapterContent |> List.map (fun line -> line.Split(" ") |> Array.toList) |> List.concat
+        //let wordSplitters = [|',';'.'; '-'; ' '; '''; '"'|]
+        let wordSplitters = [|' ';','|]
+        chapterContent |> List.map (fun line -> line.Split(wordSplitters) |> Array.toList) |> List.concat
             
     let splitLines (partitionedContent: string list list) =
         partitionedContent |> List.map splitSingleLine
