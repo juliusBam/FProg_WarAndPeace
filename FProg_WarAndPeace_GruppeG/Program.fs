@@ -6,6 +6,7 @@ open WarAndPeaceFProg.ChapterAnalysis
 let getBookContent =
     let bookStartFlag = "CHAPTER 1"
     let bookEndFlag = "*** END OF THE PROJECT GUTENBERG EBOOK, WAR AND PEACE ***"
+    //let bookEndFlagSanitized = " END OF THE PROJECT GUTENBERG EBOOK, WAR AND PEACE "
     extractFormattedFileContent (extractFileContent bookStartFlag bookEndFlag)
     
 let mapResults (chapterScores: int list) =
