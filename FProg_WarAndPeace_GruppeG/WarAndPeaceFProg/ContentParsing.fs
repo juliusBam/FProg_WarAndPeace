@@ -14,11 +14,16 @@ module ContentParsing =
             | [] -> [[line]] //if actual accumulationState is empty just add the new string
             | currentChapter :: last -> (line :: currentChapter) :: last //append the current line to the last element of the chapter 2D list
             
+    let revertChapters (parsedChapters: string list list) =
+        parsedChapters |> List.map(fun element -> element |> List.rev) |> List.rev
+    
     let partitionContentByChapter (content: string seq) =
-        content |> Seq.fold splitByChapter [] |> List.map(fun element -> element |> List.rev) |> List.rev
+        content |> Seq.fold splitByChapter [] |> revertChapters
             
     let splitSingleLine (chapterContent: string list) =
-        chapterContent |> List.map (fun line -> line.Split(" ") |> Array.toList) |> List.concat
+        //let wordSplitters = [|',';'.'; '-'; ' '; '''; '"'|]
+        let wordSplitters = [|' '|]
+        chapterContent |> List.map (fun line -> line.Split(wordSplitters) |> Array.toList) |> List.concat
             
     let splitLines (partitionedContent: string list list) =
         partitionedContent |> List.map splitSingleLine

@@ -5,15 +5,17 @@ open System.Text.RegularExpressions
 module FileOperations =
     open System.IO
     
-    let sanitizeLine (line: string) =
-        let pattern: string = "[^a-zA-Z0-9\s]"
-        Regex(pattern).Replace(line, "") 
+    //Line sanitization leads to worse results
+    // let sanitizeLine (line: string) =
+    //     let pattern: string = "[^a-zA-Z0-9\s]"
+    //     Regex(pattern).Replace(line, "")
     //use sequences in order to avoid loading all values with lazy loading
     let readFileContent (fileName: string) =
         seq {
             use reader = new StreamReader(fileName)
             while not reader.EndOfStream do
-                let cleanLine = reader.ReadLine() |> sanitizeLine
+                //let cleanLine = reader.ReadLine() |> sanitizeLine
+                let cleanLine = reader.ReadLine()
                 if cleanLine <> "" then
                     yield cleanLine
         }
