@@ -1,0 +1,1 @@
+Used SKD ist .NET 8
