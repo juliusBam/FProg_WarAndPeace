@@ -10,12 +10,9 @@ module ChapterAnalysis =
         chapterContent |> List.map applyFindWordMatch |> List.sum
         
     let indexWithFilter (termsToMatch: Set<string>)  (chapterContent: string list) = 
-        chapterContent 
-        |> List.indexed
-        |> List.filter (
-            fun (_: int, value: string) -> termsToMatch |> Set.contains value)
-        |> List.map fst // fst returns first element of (index, value) tuple
-    
+        let res = chapterContent |> List.indexed |> List.filter (
+            fun (_: int, value: string) -> termsToMatch |> Set.contains value) |> List.map fst  // fst returns first element of (index, value) tuple
+        List.append [0] res
     //in combination with the 55 differences density returns 48 differences to the reference
     //scales the distance to increase the weight of relevant distances
     //not used atm leads to worse results
