@@ -1,5 +1,4 @@
-﻿open System.IO
-open WarAndPeaceFProg.FileOperations
+﻿open WarAndPeaceFProg.FileOperations
 open WarAndPeaceFProg.ContentParsing
 open WarAndPeaceFProg.ChapterAnalysis
 

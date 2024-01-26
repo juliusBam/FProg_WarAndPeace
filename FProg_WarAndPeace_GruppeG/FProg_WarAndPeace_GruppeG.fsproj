@@ -10,11 +10,6 @@
         <Compile Include="WarAndPeaceFProg\ContentParsing.fs" />
         <Compile Include="WarAndPeaceFProg\ChapterAnalysis.fs" />
         <Compile Include="Program.fs"/>
-        <Content Include="output.txt" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Include="MathNet.Numerics" Version="5.0.0" />
     </ItemGroup>
 
 </Project>
