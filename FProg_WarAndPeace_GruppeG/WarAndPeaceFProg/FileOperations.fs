@@ -1,7 +1,5 @@
 namespace WarAndPeaceFProg
 
-open System.Text.RegularExpressions
-
 module FileOperations =
     open System.IO
     

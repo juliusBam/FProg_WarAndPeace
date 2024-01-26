@@ -1,6 +1,5 @@
 namespace WarAndPeaceFProg
 
-open System.Text.RegularExpressions
 module ChapterAnalysis =
     //returns list containing the indexes of the words contained in the defined string set
     let indexOfMatchesWithSet (termsToMatch: Set<string>)  (chapterContent: string list) = 

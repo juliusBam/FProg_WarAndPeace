@@ -1,5 +1,4 @@
-﻿open System.IO
-open WarAndPeaceFProg.FileOperations
+﻿open WarAndPeaceFProg.FileOperations
 open WarAndPeaceFProg.ContentParsing
 open WarAndPeaceFProg.ChapterAnalysis
 
@@ -11,12 +10,13 @@ let getBookContent (filePath: string) =
 
 [<EntryPoint>]
 let main (args: string array) =
-    
-    let bookPath = "../../../book.txt"
-    let peaceTermsPath = "../../../peaceTerms.txt"
-    let warTermsPath = "../../../warTerms.txt"
-    
+    let bookPath = System.Environment.GetEnvironmentVariable("BOOK_PATH")
+    let peaceTermsPath = System.Environment.GetEnvironmentVariable("PEACE_TERMS")
+    let warTermsPath = System.Environment.GetEnvironmentVariable("WAR_TERMS")
+    let outputFilePath = System.Environment.GetEnvironmentVariable("OUTPUT_FILE")
+
     let stopWatch = System.Diagnostics.Stopwatch.StartNew()
+
     let formattedBookContent = getBookContent bookPath
     let peaceTerms = Set.ofSeq (readFileContent peaceTermsPath) //terms are saved in Sequence (like a Map but without values) for fast search operations O(log n) vs 0(n)
     let warTerms = Set.ofSeq (readFileContent warTermsPath)
@@ -26,5 +26,5 @@ let main (args: string array) =
     let result = calculateChapterArgument formattedBookContent warTerms peaceTerms |> formatChapterTopicResults |> Seq.ofList
     stopWatch.Stop()
     printfn $"Chapter parsing done in: %f{stopWatch.Elapsed.TotalMilliseconds} ms"
-    writeStringsToFile "../../../output.txt" result
+    writeStringsToFile outputFilePath result
     0
