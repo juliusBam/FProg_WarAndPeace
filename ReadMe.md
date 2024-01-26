@@ -1,4 +1,9 @@
-Used SKD ist .NET 8
+The SDK .NET v8 has to be installed
+The CLI tool "diff" must be installed
+
+Dotnet needs to be added to $PATH in order to execute the startup.sh script, which executes dotnet commands.
+
+
 
 ## TODO ?
 
