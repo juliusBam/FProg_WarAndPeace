@@ -4,14 +4,15 @@
 export BOOK_PATH="./Resources/book.txt"
 export WAR_TERMS="./Resources/warTerms.txt"
 export PEACE_TERMS="./Resources/peaceTerms.txt"
-export OUTPUT_FILE="./Resources/output.txt"
+export OUTPUT_FILE="./output.txt"
 
-# Compile project
-dotnet restore
-dotnet build
+# Compile project --> needed if compiled project does not work
+# requires install .NET 8 SDK and dotnet in $PATH variable
+#dotnet restore
+#dotnet build
 
 # Execute project
-./FProg_WarAndPeace_GruppeG/bin/Debug/net8.0/FProg_WarAndPeace_GruppeG
+./FProg_WarAndPeace_GruppeG/bin/Release/net8.0/FProg_WarAndPeace_GruppeG
 
 reference="./Resources/reference.txt" 
 
