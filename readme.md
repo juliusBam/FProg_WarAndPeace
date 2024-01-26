@@ -1,3 +1,7 @@
+## Remarks
+
+The reference.txt file was downloaded from moodle (https://moodle.technikum-wien.at/pluginfile.php/2059280/mod_resource/content/0/output.txt) and a new line was added at the end of the file, in order to avoid a discrepancy in the file format between the reference and the output.
+
 ## Requirements:
 
 - The CLI tool "diff" must be installed https://phoenixnap.com/kb/linux-diff
