@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FProg_WarAndPeace_GruppeG", "FProg_WarAndPeace_GruppeG\FProg_WarAndPeace_GruppeG.fsproj", "{AFE52989-8D0B-4018-8524-74B8B4C552C6}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FProg_WarAndPeace_GruppeGTests", "FProg_WarAndPeace_GruppeGTests\FProg_WarAndPeace_GruppeGTests.fsproj", "{874D7464-3FE5-4776-8744-4138C08EBE40}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{AFE52989-8D0B-4018-8524-74B8B4C552C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFE52989-8D0B-4018-8524-74B8B4C552C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFE52989-8D0B-4018-8524-74B8B4C552C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{874D7464-3FE5-4776-8744-4138C08EBE40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{874D7464-3FE5-4776-8744-4138C08EBE40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{874D7464-3FE5-4776-8744-4138C08EBE40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{874D7464-3FE5-4776-8744-4138C08EBE40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
