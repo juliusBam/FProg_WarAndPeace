@@ -25,7 +25,7 @@ let takeFromList (list: string list) (numberOfTimes: int) =
     List.init numberOfTimes (fun _ -> takeRandomElFromList list)
     
 //returns concatenation of matches for A, random words and matches for B
-//no shuffling, no decent library found including it, implementation from
+//no shuffling, no decent library found including it. Implementation from
 //scratch would not introduce desired randomness
 let mixListsGenerator numberOfElementsA elementsA numberOfElementsB elementsB =
     Gen.choose (numberOfElementsA + numberOfElementsB + 1, 5 * (numberOfElementsA + numberOfElementsB) ) // Change the range as needed for the random number of words
@@ -99,3 +99,48 @@ let densityNumberOfMatches () =
     let relatedTopicRes = text |> List.forall partiallyCompareDensityCorrectProp
     
     Assert.True(relatedTopicRes)
+
+// Generator for tuples of integers
+let tupleGenerator () =
+    Gen.two (Gen.choose(0, 1000))
+
+//Calculate difference should never return a negative value
+[<Test>]
+let calculateDifferenceOnlyPositive () =
+    let res = Gen.sample 10 (tupleGenerator())
+    let onlyPositive = res
+                       |> Array.forall
+                            (fun el ->
+                                let first = fst el
+                                let second = snd el
+                                (calculateDifference first second) >= 0
+                            )
+
+    Assert.True(onlyPositive)
+    
+//Generate a list of integers 
+let listOfIndexesGenerator () =
+    Gen.listOf (Gen.choose(0, 1000))
+    
+let distanceIsPositiveProp (indexList: int list) =
+    let distances = calculateDistance indexList
+    distances |> List.forall (fun el -> el >= 0)
+   
+[<Test>]
+let distancesOnlyPositive () =
+    let indexes = Gen.sample 100 (listOfIndexesGenerator()) |> Array.toList
+    let onlyPositive = indexes |> List.forall (distanceIsPositiveProp) 
+    Assert.True(onlyPositive)
+
+let distanceSizeIsRightProp (indexList: int list) =
+    let distances = calculateDistance indexList
+    if (indexList.Length = 0 || indexList.Length = 1) then
+        distances.Length = 0
+    else
+        distances.Length = (indexList.Length - 1)
+   
+[<Test>]
+let distancesSizeRight () =
+    let indexes = Gen.sample 100 (listOfIndexesGenerator()) |> Array.toList
+    let onlyPositive = indexes |> List.forall (distanceSizeIsRightProp) 
+    Assert.True(onlyPositive)
