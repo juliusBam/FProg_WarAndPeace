@@ -15,7 +15,7 @@ let generateRandomLine () =
             ' '
         else
             alphanumericChars.[rnd.Next(alphanumericChars.Length)]
-    let randomString = String([|for _ in 1..length -> getChar ()|])
+    let randomString = List.init length (fun _ -> getChar ()) |> String.Concat
     randomString
 
 //hardcoded words inserted for properties

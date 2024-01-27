@@ -8,10 +8,10 @@ open WarAndPeaceFProg.ChapterAnalysis
 //no empty spaces to simulate single words
 let generateRandomWord () =
     let rnd = Random()
-    let length = rnd.Next(40, 200)
+    let length = rnd.Next(2, 12)
     let alphanumericChars = ['a'..'z'] @ ['A'..'Z'] @ ['0'..'9']
     let getChar () = alphanumericChars.[rnd.Next(alphanumericChars.Length)]
-    let randomString = String([|for _ in 1..length -> getChar ()|])
+    let randomString = List.init length (fun _ -> getChar ()) |> String.Concat
     randomString
 
 //takes a random "match" from the specified list
