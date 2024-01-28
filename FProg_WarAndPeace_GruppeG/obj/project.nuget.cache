@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Q/biOu5HvlFGq1Y3D2jBgIRBbVT8vKA9fRvUpdtYpekAS/Geggn74zCO5CK/Q9rkffyEVy+rtICQ1YUCPz97iQ==",
+  "success": true,
+  "projectFilePath": "/home/simonb/Documents/repositories_FH/fporg-project/FProg_WarAndPeace/FProg_WarAndPeace_GruppeG/FProg_WarAndPeace_GruppeG.fsproj",
+  "expectedPackageFiles": [
+    "/home/simonb/.nuget/packages/fsharp.core/8.0.100/fsharp.core.8.0.100.nupkg.sha512",
+    "/home/simonb/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.0/microsoft.aspnetcore.app.ref.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

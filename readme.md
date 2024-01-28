@@ -1,5 +1,9 @@
 ## Remarks
 
+The application is structured as a solution containing two projects:
+- FProg_WarAndPeace_GruppeG
+- FProg_WarAndPeace_GruppeGTests
+
 The reference.txt file was downloaded from moodle (https://moodle.technikum-wien.at/pluginfile.php/2059280/mod_resource/content/0/output.txt) and a new line was added at the end of the file, in order to avoid a discrepancy in the file format between the reference and the output.
 
 ## Requirements:
@@ -10,6 +14,10 @@ The reference.txt file was downloaded from moodle (https://moodle.technikum-wien
 ## Test-run execution
 
 The bash script `startup.sh` is provided to run the program and automatically compare the results with the provided reference. It will output the time elapsed for the parsing of the book content as well as for the computation of the chapters' contents.
+
+The bash script can be called with one option, namely `--build` or `-b` this will compile the solution, run the tests and run the newly compiled binaries, for example:
+
+`./startup.sh --build` or `./startup.sh -b` --> The usage of the build option requires the .NET 8.0 SKD to be installed
 
 ### Troubleshooting
 
