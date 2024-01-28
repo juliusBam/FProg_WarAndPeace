@@ -25,8 +25,7 @@ let takeFromList (list: string list) (numberOfTimes: int) =
     List.init numberOfTimes (fun _ -> takeRandomElFromList list)
     
 //returns concatenation of matches for A, random words and matches for B
-//no shuffling, no decent library found including it. Implementation from
-//scratch would not introduce desired randomness
+//no shuffling, no decent library found including it and it should not affect the test's results
 let mixListsGenerator numberOfElementsA elementsA numberOfElementsB elementsB =
     Gen.choose (numberOfElementsA + numberOfElementsB + 1, 5 * (numberOfElementsA + numberOfElementsB) ) // Change the range as needed for the random number of words
     |> Gen.map (fun randomCount ->
@@ -118,14 +117,15 @@ let calculateDifferenceOnlyPositive () =
 
     Assert.True(onlyPositive)
     
-//Generate a list of integers 
+//Generate a list of integers --> used as generator for the indexes of the matches
 let listOfIndexesGenerator () =
     Gen.listOf (Gen.choose(0, 1000))
     
 let distanceIsPositiveProp (indexList: int list) =
     let distances = calculateDistance indexList
     distances |> List.forall (fun el -> el >= 0)
-   
+
+//The calculated distances should all be >= 0 because the calculate distance functions does not allow negative numbers to be returned
 [<Test>]
 let distancesOnlyPositive () =
     let indexes = Gen.sample 100 (listOfIndexesGenerator()) |> Array.toList
@@ -138,7 +138,8 @@ let distanceSizeIsRightProp (indexList: int list) =
         distances.Length = 0
     else
         distances.Length = (indexList.Length - 1)
-   
+
+//The distance array should have 1 element less than the matchesArray  
 [<Test>]
 let distancesSizeRight () =
     let indexes = Gen.sample 100 (listOfIndexesGenerator()) |> Array.toList
